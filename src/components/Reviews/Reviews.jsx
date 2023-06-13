@@ -19,6 +19,10 @@ export const Rewiews = () => {
     getReviewsList();
   }, [id]);
 
+  if (reviews.length === 0) {
+    return <p>Not found any reviews</p>;
+  }
+
   return (
     <ul>
       {reviews.map(review => (

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { getTrendsDayMovies } from 'services/moviesApi';
 
 export const TrendsMoviesList = () => {
-  const [trendsMovies, setTrendsMovie] = useState([]);
+  const [trendsMovies, setTrendsMovie] = useState(null);
   useEffect(() => {
     const getTrendsMovies = async () => {
       try {
@@ -19,7 +19,7 @@ export const TrendsMoviesList = () => {
 
   return (
     <ul>
-      {trendsMovies.map(movie => (
+      {trendsMovies?.map(movie => (
         <Link key={movie.id} to={`movies/${movie.id}`}>
           <li>{movie.title}</li>
         </Link>

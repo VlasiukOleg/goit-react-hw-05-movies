@@ -4,7 +4,6 @@ import { NavLink } from 'react-router-dom';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   max-width: 960px;
   height: 100vh;
   margin: 0 auto;
@@ -23,6 +22,10 @@ export const Header = styled.header`
   > nav {
     display: flex;
   }
+`;
+
+export const Main = styled.main`
+  flex: 1 1 auto;
 `;
 
 export const Link = styled(NavLink)`

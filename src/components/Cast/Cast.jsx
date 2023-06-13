@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getCast } from 'services/moviesApi';
+import placeholder from '../../img/holdercast.jpeg';
 
 export const Cast = () => {
   const IMAGE_URL = 'https://image.tmdb.org/t/p/w500';
   const { id } = useParams();
-  const [characters, setCharacters] = useState([]);
+  const [characters, setCharacters] = useState(null);
 
   useEffect(() => {
     const getCastList = async () => {
@@ -22,10 +23,14 @@ export const Cast = () => {
 
   return (
     <ul>
-      {characters.map(character => (
+      {characters?.map(character => (
         <li key={character.id}>
           <img
-            src={`${IMAGE_URL}${character.profile_path}`}
+            src={
+              character.profile_path
+                ? `${IMAGE_URL}${character.profile_path}`
+                : placeholder
+            }
             alt={character.name}
             width={180}
           />
