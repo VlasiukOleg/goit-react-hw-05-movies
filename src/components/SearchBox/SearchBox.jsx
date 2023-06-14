@@ -1,14 +1,30 @@
-import { Wrapper, Input, Icon } from './SearchBox.styled';
+import { useState } from 'react';
+import { SearchForm, Input, Icon, SearchBtn } from './SearchBox.styled';
 
-export const SearchBox = ({ value, onChange }) => {
+export const SearchBox = ({ onSubmit }) => {
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const handleChange = ({ target }) => {
+    setSearchQuery(target.value);
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    onSubmit(searchQuery);
+    setSearchQuery('');
+  };
+
   return (
-    <Wrapper>
-      <Icon />
+    <SearchForm onSubmit={handleSubmit}>
       <Input
         type="text"
-        value={value}
-        onChange={e => onChange(e.target.value)}
+        name="query"
+        value={searchQuery}
+        onChange={handleChange}
       />
-    </Wrapper>
+      <SearchBtn type="submit">
+        <Icon />
+      </SearchBtn>
+    </SearchForm>
   );
 };

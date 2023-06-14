@@ -2,9 +2,12 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getReviews } from 'services/moviesApi';
 
-export const Rewiews = () => {
+import { ReviewsList } from './Reviews.styled';
+
+const Rewiews = () => {
   const { id } = useParams();
   const [reviews, setRewiews] = useState([]);
+  const [isNotFound, setIsNotFound] = useState(false);
 
   useEffect(() => {
     const getReviewsList = async () => {
@@ -12,6 +15,9 @@ export const Rewiews = () => {
         const reviewsList = await getReviews(id);
         setRewiews(reviewsList.data.results);
         console.log(reviewsList.data.results);
+        if (reviewsList.data.results.length === 0) {
+          setIsNotFound(true);
+        }
       } catch (error) {
         console.log(error.message);
       }
@@ -19,18 +25,21 @@ export const Rewiews = () => {
     getReviewsList();
   }, [id]);
 
-  if (reviews.length === 0) {
-    return <p>Not found any reviews</p>;
-  }
-
   return (
-    <ul>
-      {reviews.map(review => (
-        <li key={review.id}>
-          <p>Author: {review.author}</p>
-          <p>{review.content}</p>
-        </li>
-      ))}
-    </ul>
+    <>
+      <ReviewsList>
+        {isNotFound && <p>We don't find any reviews for this movie</p>}
+        {reviews.map(review => (
+          <li key={review.id}>
+            <p>
+              <b>Author:</b> {review.author}
+            </p>
+            <p>{review.content}</p>
+          </li>
+        ))}
+      </ReviewsList>
+    </>
   );
 };
+
+export default Rewiews;

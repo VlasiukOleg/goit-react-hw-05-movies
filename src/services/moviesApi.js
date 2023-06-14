@@ -37,3 +37,13 @@ export const getReviews = async movieId => {
   const cast = await axios.get(BASE_URL, { params });
   return cast;
 };
+
+export const getSearchMovies = async querySearch => {
+  const BASE_URL = `https://api.themoviedb.org/3/search/movie`;
+  const params = {
+    api_key: API_KEY,
+    query: `${querySearch}`,
+  };
+  const movies = await axios.get(BASE_URL, { params });
+  return movies;
+};

@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { HiSearch } from 'react-icons/hi';
 
-export const Wrapper = styled.div`
+export const SearchForm = styled.form`
   display: inline-flex;
   align-items: center;
   position: relative;
@@ -18,6 +18,13 @@ export const Input = styled.input`
 export const Icon = styled(HiSearch)`
   width: 20px;
   height: 20px;
+`;
+
+export const SearchBtn = styled.button`
   position: absolute;
   right: 6px;
+  background: rgba(0, 0, 0, 0);
+  border: 0;
+  outline: 0;
+  cursor: pointer;
 `;

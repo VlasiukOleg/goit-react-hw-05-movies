@@ -1,5 +1,7 @@
 import { TrendsMoviesList } from 'components/TrendsMoviesList/TrendsMoviesList';
 
-export const HomePage = () => {
+const HomePage = () => {
   return <TrendsMoviesList />;
 };
+
+export default HomePage;
