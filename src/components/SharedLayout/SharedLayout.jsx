@@ -10,11 +10,14 @@ export const SharedLayout = () => {
         <nav>
           <Link to="/">Home</Link>
           <Link to="/movies">Movies</Link>
+          <Link to="/about">About</Link>
         </nav>
       </Header>
 
       <Suspense fallback={<div>Loading...</div>}>
-        <Outlet />
+        <Main>
+          <Outlet />
+        </Main>
       </Suspense>
 
       <Footer>Copyright © 2023 Created by Vlasiuk Oleg.</Footer>
