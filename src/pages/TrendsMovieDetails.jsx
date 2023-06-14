@@ -11,6 +11,7 @@ import {
   MovieAddInfoWrap,
   Link,
 } from './TrendsMovieDetails.styled';
+import { LoadingSpinner } from 'components/LoadingSpinner/LoadingSpinner';
 
 const TrendsMovieDetails = () => {
   const location = useLocation();
@@ -77,7 +78,7 @@ const TrendsMovieDetails = () => {
               </li>
             </ul>
           </MovieAddInfoWrap>
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<LoadingSpinner />}>
             <Outlet />
           </Suspense>
         </div>

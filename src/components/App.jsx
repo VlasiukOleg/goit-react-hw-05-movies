@@ -7,14 +7,12 @@ const MoviesPage = lazy(() => import('../pages/MoviesPage'));
 const TrendsMovieDetails = lazy(() => import('../pages/TrendsMovieDetails'));
 const Cast = lazy(() => import('../components/Cast/Cast'));
 const Rewiews = lazy(() => import('../components/Reviews/Reviews'));
-const AboutPage = lazy(() => import('../pages/AboutPage'));
 
 export const App = () => {
   return (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
         <Route index element={<HomePage />} />
-        <Route path="/about" element={<AboutPage />} />
         <Route path="movies" element={<MoviesPage />} />
         <Route path="movies/:id" element={<TrendsMovieDetails />}>
           <Route path="cast" element={<Cast />} />

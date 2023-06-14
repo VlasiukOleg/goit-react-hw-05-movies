@@ -46,6 +46,6 @@ export const Footer = styled.footer`
   align-items: center;
   justify-content: center;
   border-top: 1px solid black;
-  margin-top: 16px;
+  margin-bottom: 16px;
   padding: 8px 0;
 `;
