@@ -2,6 +2,7 @@ import { Outlet, useLocation, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getMoviesById } from 'services/moviesApi';
 import { BackLink } from 'components/BackLink/BackLink';
+import { Suspense } from 'react';
 
 import {
   MovieDetailsWrap,
@@ -76,8 +77,9 @@ const TrendsMovieDetails = () => {
               </li>
             </ul>
           </MovieAddInfoWrap>
-
-          <Outlet />
+          <Suspense fallback={<div>Loading...</div>}>
+            <Outlet />
+          </Suspense>
         </div>
       )}
     </div>
